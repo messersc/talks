@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body {
+	font-family: 'Droid Serif'; 
+        font-size: 30px
+	}
+      h1, h2, h3 , h4, h5, h6{
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code {
+	font-family: 'Ubuntu Mono';
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Lab Meeting - January 2015
+## RNA-Seq, Reproducible Research and Galaxy
+---
+
+# Agenda
+
+* mRNA-Seq
+    * Workflow
+    * Tools
+    	* Aligners
+    	* Quantifiers
+    	* Finding Differentially Expressed Genes
+	* Downstream Processing
+---
+
+# Agenda (cont.) 
+* Reproducible Research
+* Galaxy
+* Histories
+* Workflows
+* Bringing your tools to Galaxy
+    * Writing a wrapper for JAMM
+
+---
+
+# Introduction
+
+What's the best way to analyze my data? 
+
+Possible requirements:
+
+* reproducible
+* shareable
+* easy to use
+* automated
+---
+
+# Before building a pipeline
+What's the right tool for each step?
+
+# Before running the pipeline
+Do I know everything necessary about my data to
+make the right decisions when configuring each tool?
+
+---
+
+# Reproducible Research
+## What are we aiming for?
+### What does this mean for my own research? 
+#### I don't have to use Galaxy, do I?
+
+###### No.
+---
+# Reproducible Research
+
+---
+# Galaxy
+"Galaxy is an open, web-based platform for data intensive biomedical research. Whether on the free public server or your own instance, you can perform, reproduce, and share complete analyses."
+
+![Default-aligned image](galaxy.png)
+
+---
+# Galaxy
+
+Concepts to represent data include
+
+* Histories
+* Workflows
+* Pages
+* Data Libraries
+
+
+
+ </textarea>
+<script src="http://gnab.github.com/remark/downloads/remark-0.5.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+var hljs = remark.highlighter.engine;
+</script>
+<script src="http://gnab.github.io/remark/js/remark.language.js" type="text/javascript"></script>
+<script type="text/javascript">
+var slideshow = remark.create({
+highlightStyle: 'monokai',
+highlightLanguage: 'remark',
+slideNumberFormat: '%current%'
+}) ;
+</script>
+</body>
+</html>
