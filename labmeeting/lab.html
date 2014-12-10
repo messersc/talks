@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Title</title>
+    <title>Lab Meeting Jan 2015</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
       @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
@@ -10,15 +10,26 @@
 
       body {
 	font-family: 'Droid Serif'; 
-        font-size: 30px
+        font-size: 32px;
 	}
       h1, h2, h3 , h4, h5, h6{
         font-family: 'Yanone Kaffeesatz';
         font-weight: normal;
       }
-      .remark-code, .remark-inline-code {
+      h1 {font-size: 5em; } 
+     .remark-code, .remark-inline-code {
 	font-family: 'Ubuntu Mono';
       }
+        .footnote {
+        position: absolute;
+        bottom: 1em;
+        font-size: 80%;
+	}
+	li p { line-height: 1.5em;
+        font-size: 2em;
+	 }
+        .red { color: #fa0000; }
+        .large { font-size: 2em; }
     </style>
   </head>
   <body>
@@ -72,14 +83,98 @@ make the right decisions when configuring each tool?
 
 ---
 
+background-image:url(nprot.2013.099-F1.jpg)
+.footnote[Anders et al. 2013 Nat Prot]
+---
+
+# Sequence quality checks
+
+* FAST__QC__
+
+# Adapters, Barcodes, ...
+* flexbar
+* Trimmomatic
+* FastX
+* TrimGalore / Cutadapt
+
+---
+
+# Read Mapping / Aligning
+
+
+
+---
+# Feature Counting / Abundance Estimation
+
+* HTSeq-count
+* Bioconductor, R
+
+---
+# Calling Differentially Expressed Genes
+
+Given a table of feature counts for n conditions, 
+which features show differential expression between conditions?
+
+* edgeR
+* DESeq, DESeq2
+* limma + voom
+
+---
+# Downstream Analysis
+
+* Enrichment of GO, Pathways, ...
+
+---
+
+# Isoform Territory
+
+Building a decent pipeline is much harder than for DGE
+* much less consensus on tools
+* transcript abundance estimation is hard
+* more "experimental"
+
+---
+
+background-image:url(mp.jpg)
+
+---
+
 # Reproducible Research
 ## What are we aiming for?
 ### What does this mean for my own research? 
 #### I don't have to use Galaxy, do I?
-
 ###### No.
 ---
 # Reproducible Research
+### Data analysis and other scientific computations should be *reproducible*
+
+> If someone asks you: Would you be able to recreate Figure 2B from your third to last paper in a day a from the raw data?
+
+###  _Some_ reproducibility is better than none.
+> While it may be painful to adjust your workflow now, it can save you at lot of anger, fear and despair in the long run
+
+---
+# Concepts
+#### Data 
+* No data manipulation by hand!!
+* Dataset reconstruction from the raw data
+
+#### Scripts
+1. Write scripts
+2. Let your scripts generate reports 
+3. Turn repeatedly used code into functions 
+ 
+#### Audit trail: version control
+* git, hq, ...
+
+#### Writing
+* use version control, too
+* use a repository for collaboration
+
+???
+Dropbox and Word are not the best way to do things
+
+Step in the right direction
 
 ---
 # Galaxy
@@ -95,22 +190,156 @@ Concepts to represent data include
 * Histories
 * Workflows
 * Pages
-* Data Libraries
+* Data Libraries, Tools, Visualizations
 
+---
+# Histories
+are analyses in Galaxy that show (all)
 
+* input
+* intermediate 
+* final
 
- </textarea>
-<script src="http://gnab.github.com/remark/downloads/remark-0.5.2.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-var hljs = remark.highlighter.engine;
-</script>
-<script src="http://gnab.github.io/remark/js/remark.language.js" type="text/javascript"></script>
-<script type="text/javascript">
-var slideshow = remark.create({
-highlightStyle: 'monokai',
-highlightLanguage: 'remark',
-slideNumberFormat: '%current%'
-}) ;
-</script>
-</body>
+datasets, as well as 
+
+* every step in the process 
+* the settings used with each
+
+History can be imported into your session and rerun as is or modified.
+---
+background-image:url(history.png)
+---
+# Workflows
+
+specify the steps in a process but not the datasets. Workflows are analyses that are meant to be run, each time with different user-provided datasets
+
+---
+
+background-image:url(sketch.jpg)
+
+---
+
+# Bonus: Bring your own software to Galaxy
+### Or how I wrote a wrapper for JAMM
+
+Galaxy uses XML to render the interface that gets exposed to the user for each tool
+
+```xml
+<tool id="jamm1.0.6rev2" name="JAMM" version="1.0.6.2">
+<description>Calls peaks on NGS data</description>
+<requirements>
+<!--
+	<requirement type="package" version="2.5">b2g4pipe</requirement>
+-->
+</requirements>
+<command interpreter="python">
+jammwrapper.py -i
+	#for $x in $replicate
+	${x.input.file_name}
+	#end for
+	-g ${genomeSizeFile}
+	-z $output
+	-m $mode
+	-r $resolution
+	-p $processes
+</command>
+```
+---
+```xml
+<inputs>
+	<repeat name="replicate" title="Replicate">
+		<param name="input" type="data" format="bed">
+		</param>
+	</repeat>
+	<param name="genomeSizeFile" type="data" label="File indicating chromosome sizes" description="Chromosome size">
+	</param>
+	<param name="mode" type="select" label="Mode (normal or narrow)">
+     <option value="normal">normal</option>
+     <option value="narrow">narrow</option>
+    </param>
+	<param name="resolution" type="select" label="Resolution (peak or region)">
+     <option value="peak">peak</option>
+     <option value="region">region</option>
+    </param>
+         
+    <param name="processes"  type="text" value="4" optional="true" help="Number of threads used by R" /> 
+</inputs>
+
+<outputs>
+<data name="output" format="tabular" label="Narrowpeak tabular" />
+</outputs>
+```
+---
+
+background-image:url(jamm2.png)
+
+---
+# Do I need a wrapper?
+
+.footnote[http://wiki.sb-roscoff.fr/ifb/index.php/Tool_Integration_Short_Tutorial]
+
+* Input files are not passed through arguments but loaded based on predetermined fixed names
+    * The wrapper can create symbolic links between the files and the predetermined fixed names in the cwd 
+* Output files with conditional names are not passed through arguments
+    * The wrapper can create symbolic links between the files and predetermined fixed names in the cwd 
+* Using R functions
+    * The wrapper can be used for libraries loading, data preprocessing and argument parsing 
+* Multiple command lines
+    * A simple bash wrapper can be used to pass arguments and call multiple commands
+
+## JAMM does at least 2 of these things
+---
+
+```python
+import argparse, os, shutil, subprocess, sys, tempfile
+def main(): 
+
+    #Read command line arguments
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-i', dest = 'input', nargs='+')
+    parser.add_argument('-g', dest = 'gsize')
+    parser.add_argument('-z', dest = 'peakfile')
+    
+    parser.add_argument('-m', dest = 'mode')
+    parser.add_argument('-r', dest = 'resolution')
+    parser.add_argument('-p', dest = 'processes')
+    #parser.add_argument('-b', dest = 'binSize')
+    
+    args = parser.parse_args()
+    tmp_dir = tempfile.mkdtemp()
+    os.chdir(tmp_dir)
+    # symlink creation
+    for file in args.input:
+        filen =  tmp_dir + "/" + os.path.basename(os.path.splitext(file)[0])+".bed"
+        os.symlink(file, filen)
+        
+    command = ( "/home/cmesser/galaxy/tools/jamm/JAMM.sh -s %s -g %s -o results -m %s -r %s -p %s"
+     % ( tmp_dir, args.gsize, args.mode, args.resolution, args.processes ) )     proc = subprocess.Popen( command, shell=True)
+    returncode = proc.wait()
+    
+    #mv files to a place where galaxy wrapper can find them
+    mvcommand = "mv %s/results/peaks/all.peaks.narrowPeak %s" % ( tmp_dir, args.peakfile ) 
+    os.system(mvcommand)
+
+# clean up temp dir
+    if os.path.exists( tmp_dir ):
+        shutil.rmtree( tmp_dir )    
+    
+if __name__ == "__main__":
+    main()
+``` 
+---
+This presentation was created using [remark.js](https://github.com/gnab/remark)
+
+The work done for JAMM in Galaxy can be found at https://github.com/messersc/jamm
+
+### Further Reading
+
+   </textarea>
+    <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script type="text/javascript">
+      var slideshow = remark.create();
+    </script>
+  </body>
 </html>
