@@ -112,7 +112,32 @@ class:center,middle
 ---
 class:center,middle
 ![](http://betterexplained.com/wp-content/uploads/version_control/vcs_conflict.png)
+---
+# 1st step
+```bash
+git init
+```
 
+# Two stage commit process
+```bash
+git add myscript.R # This is called staging
+git add -A         # Stage all new & modified files
+
+git commit -m "Initial commit of my awesome script"
+
+git status
+
+touch testdata.Rdata
+
+git status
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        testdata.R
+
+git push -u origin master # This will not push testdata.RData to the remote
+```
+---
+background-image:url(http://git-scm.com/book/en/v2/book/02-git-basics/images/lifecycle.png)
 ---
 background-image:url(images/Octocat.jpg)
 ---
@@ -167,6 +192,20 @@ https://github.com/messersc/jamm
 * keeping track of data?
     * git/hg do not work well with GB-sized (binary) files
 
+
+---
+# .gitignore
+
+put all files you do not want to show up in git
+```bash
+cat .gitignore 
+.Rproj.user
+.Rhistory
+.RData
+\*.Rproj
+.gitignore
+\*.swp
+```
 ---
 
 # Guided Tutorials
