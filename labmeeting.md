@@ -1,44 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Lab Meeting Jan 2015</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <style type="text/css">
-      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-      @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
-      @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
-      body {
-	font-family: 'Droid Serif'; 
-        font-size: 32px;
-	}
-      h1, h2, h3 , h4, h5, h6{
-        font-family: 'Yanone Kaffeesatz';
-        font-weight: normal;
-      }
-      h1 {font-size: 5em; } 
-     .remark-code, .remark-inline-code {
-	font-family: 'Ubuntu Mono';
-      }
-        .footnote {
-        position: absolute;
-        bottom: 1em;
-        font-size: 80%;
-	}
-	li p { line-height: 1.5em;
-        font-size: 2em;
-	 }
-        .red { color: #fa0000; }
-        .large { font-size: 2em; }
-    </style>
-  </head>
-  <body>
-    <textarea id="source">
-
-class: center, middle
-
 # Lab Meeting - January 2015
 ## RNA-Seq, Reproducible Research and Galaxy
+
 ---
 
 # Agenda
@@ -49,7 +11,8 @@ class: center, middle
     	* Aligners
     	* Quantifiers
     	* Finding Differentially Expressed Genes
-	* Downstream Processing
+    	* Downstream Processing
+
 ---
 
 # Agenda (cont.) 
@@ -66,12 +29,12 @@ class: center, middle
 
 What's the best way to analyze my data? 
 
-Possible requirements:
-
+## Possible requirements:
 * reproducible
 * shareable
 * easy to use
 * automated
+
 ---
 
 # Before building a pipeline
@@ -83,12 +46,12 @@ make the right decisions when configuring each tool?
 
 ---
 
-background-image:url(nprot.2013.099-F1.jpg)
-.footnote[Anders et al. 2013 Nat Prot]
+background-image:url(images/nprot.jpg)
+.footnote[Anders et al. 2013 Nat Protoc]
+
 ---
 
 # Sequence quality checks
-
 * FAST__QC__
 
 # Adapters, Barcodes, ...
@@ -100,15 +63,14 @@ background-image:url(nprot.2013.099-F1.jpg)
 ---
 
 # Read Mapping / Aligning
-
 * BWA? (not splicing aware)
 * Tophat 2
-* STAR (fast if you have RAM)
+* STAR (fast if you have RAM: 31 GB for hs/mm)
 * RUM
 * GSNAP (SNP-tolerant)
+
 ---
 # Feature Counting / Abundance Estimation
-
 * HTSeq-count
 * Bioconductor, R
 
@@ -124,12 +86,12 @@ Given a table of feature counts for n conditions,
 which features show differential expression between conditions?
 
 * edgeR
-* DESeq, DESeq2
-* limma + voom
-
+* DESeq2
+* limma & voom
 * Bitseq
 
 ---
+
 # Downstream Analysis
 
 * Enrichment of GO, Pathways, ...
@@ -145,7 +107,7 @@ Building a decent pipeline is much harder than for DGE
 
 ---
 
-background-image:url(mp.jpg)
+background-image:url(images/mp.jpg)
 
 ---
 
@@ -154,7 +116,9 @@ background-image:url(mp.jpg)
 ### What does this mean for my own research? 
 #### I don't have to use Galaxy, do I?
 ###### No.
+
 ---
+
 # Reproducible Research
 ### Data analysis and other scientific computations should be *reproducible*
 
@@ -164,6 +128,7 @@ background-image:url(mp.jpg)
 > While it may be painful to adjust your workflow now, it can save you at lot of anger, fear and despair in the long run
 
 ---
+
 # Concepts
 #### Data 
 * No data manipulation by hand!!
@@ -190,7 +155,7 @@ Step in the right direction
 # Galaxy
 "Galaxy is an open, web-based platform for data intensive biomedical research. Whether on the free public server or your own instance, you can perform, reproduce, and share complete analyses."
 
-![Default-aligned image](galaxy.png)
+![Default-aligned image](images/galaxy.png)
 
 ---
 # Galaxy
@@ -216,8 +181,10 @@ datasets, as well as
 * the settings used with each
 
 History can be imported into your session and rerun as is or modified.
+
 ---
-background-image:url(history.png)
+background-image:url(images/history.png)
+
 ---
 # Workflows
 
@@ -225,7 +192,7 @@ specify the steps in a process but not the datasets. Workflows are analyses that
 
 ---
 
-background-image:url(sketch.jpg)
+background-image:url(images/sketch.jpg)
 
 ---
 
@@ -279,9 +246,10 @@ jammwrapper.py -i
 <data name="output" format="tabular" label="Narrowpeak tabular" />
 </outputs>
 ```
+
 ---
 
-background-image:url(jamm2.png)
+background-image:url(images/jamm2.png)
 
 ---
 # Do I need a wrapper?
@@ -298,6 +266,7 @@ background-image:url(jamm2.png)
     * A simple bash wrapper can be used to pass arguments and call multiple commands
 
 ## JAMM does at least 2 of these things
+
 ---
 
 ```python
@@ -338,18 +307,8 @@ def main():
 if __name__ == "__main__":
     main()
 ``` 
+
 ---
 This presentation was created using [remark.js](https://github.com/gnab/remark)
 
 The work done for JAMM in Galaxy can be found at https://github.com/messersc/jamm
-
-### Further Reading
-
-   </textarea>
-    <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js">
-    </script>
-    <script type="text/javascript">
-      var slideshow = remark.create();
-    </script>
-  </body>
-</html>
