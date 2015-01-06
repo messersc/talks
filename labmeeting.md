@@ -1,6 +1,6 @@
 # Lab Meeting - January 2015
 ## RNA-Seq, Reproducible Research and Galaxy
-
+## Clemens Messerschmidt
 ---
 
 # Agenda
@@ -18,8 +18,8 @@
 # Agenda (cont.) 
 * Reproducible Research
 * Galaxy
-* Histories
-* Workflows
+	* Histories
+	* Workflows
 * Bringing your tools to Galaxy
     * Writing a wrapper for JAMM
 
@@ -29,7 +29,7 @@
 
 What's the best way to analyze my data? 
 
-## Possible requirements:
+## Possible requirements
 * reproducible
 * shareable
 * easy to use
@@ -46,8 +46,10 @@ make the right decisions when configuring each tool?
 
 ---
 
-background-image:url(images/nprot.jpg)
+background-image:url(http://www.nature.com/nprot/journal/v8/n9/images/nprot.2013.099-F1.jpg)
 .footnote[Anders et al. 2013 Nat Protoc]
+
+<!-- background-image:url(images/nprot.jpg) -->
 
 ---
 
@@ -70,19 +72,36 @@ background-image:url(images/nprot.jpg)
 * GSNAP (SNP-tolerant)
 
 ---
+
+background-image:url(http://3.bp.blogspot.com/-5WTELB6A4JQ/UJP22me-QvI/AAAAAAABB3M/lEk0FNWnPcs/s1600/staraligner.png)
+# STAR
+.footnote[doi: 10.1093/bioinformatics/bts635]
+
+---
+
 # Feature Counting / Abundance Estimation
 * HTSeq-count
-* Bioconductor, R
+* Bioconductor tools with similar approaches
+### The approach taken _is_ biologically wrong
+![Default-aligned image](http://3.bp.blogspot.com/-UN2mxaEvKV0/UM9-SZqwkHI/AAAAAAABCV8/8HGLF9_oZKE/s1600/cuffdiff1.png)
+.footnote[doi:10.1038/nbt.2450 Cufflinks, Trapnell et al, Pachter lab]
 
-### Isoforms
-* RSEM
-* express
+???
+top row: DGE undetectable by counting reads mapping to any exon, and is underestimated if counting only constitutive exons
+middle: apparent change would be detected, but in the wrong direction
+bottom: ?
+
+---
+
+# Isoforms ~ Transcript deconvolution
+* RSEM + EBSeq
+* eXpress
 * Bitseq
 
 ---
 # Calling Differentially Expressed Genes
 
-Given a table of feature counts for n conditions, 
+Given a table of feature counts for _n_ conditions, 
 which features show differential expression between conditions?
 
 * edgeR
@@ -104,6 +123,21 @@ Building a decent pipeline is much harder than for DGE
 * much less consensus on tools
 * transcript abundance estimation is hard
 * more "experimental"
+
+---
+
+background-image:url(http://2.bp.blogspot.com/-YeFf7ioF7QY/UnKErnxs6uI/AAAAAAABFnk/JdG3UMwtBds/s640/eyras-methods.png)
+
+---
+
+background-image:url(images/miso.jpg)
+.footnote[MISO & Sashimi, http://dx.doi.org/10.1101/002576]
+
+???
+
+MISO is nice for plotting your results
+
+lacks the statistical framework to analyze replicates
 
 ---
 
@@ -146,10 +180,10 @@ background-image:url(images/mp.jpg)
 * use version control, too
 * use a repository for collaboration
 
-???
-Dropbox and Word are not the best way to do things
+---
 
-Step in the right direction
+# Stop hosting code at your lab website
+
 
 ---
 # Galaxy
@@ -199,7 +233,7 @@ background-image:url(images/sketch.jpg)
 # Bonus: Bring your own software to Galaxy
 ### Or how I wrote a wrapper for JAMM
 
-Galaxy uses XML to render the interface that gets exposed to the user for each tool
+Galaxy uses a XML (tool definition) to render the interface that gets exposed to the user for each tool
 
 ```xml
 <tool id="jamm1.0.6rev2" name="JAMM" version="1.0.6.2">
@@ -249,7 +283,7 @@ jammwrapper.py -i
 
 ---
 
-background-image:url(images/jamm2.png)
+background-image:url(images/jamm.png)
 
 ---
 # Do I need a wrapper?
@@ -297,7 +331,7 @@ def main():
     returncode = proc.wait()
     
     #mv files to a place where galaxy wrapper can find them
-    mvcommand = "mv %s/results/peaks/all.peaks.narrowPeak %s" % ( tmp_dir, args.peakfile ) 
+    mvcommand = "mv results/peaks/all.peaks.narrowPeak %s" % args.peakfile
     os.system(mvcommand)
 
 # clean up temp dir
