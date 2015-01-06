@@ -84,19 +84,12 @@ background-image:url(http://3.bp.blogspot.com/-5WTELB6A4JQ/UJP22me-QvI/AAAAAAABB
 * Bioconductor tools with similar approaches
 ### The approach taken _is_ biologically wrong
 ![Default-aligned image](http://3.bp.blogspot.com/-UN2mxaEvKV0/UM9-SZqwkHI/AAAAAAABCV8/8HGLF9_oZKE/s1600/cuffdiff1.png)
-.footnote[doi:10.1038/nbt.2450 Cufflinks, Trapnell et al, Pachter lab]
+.footnote[doi:10.1038/nbt.2450 Cufflinks2, Trapnell et al 2012, Pachter lab]
 
 ???
 top row: DGE undetectable by counting reads mapping to any exon, and is underestimated if counting only constitutive exons
 middle: apparent change would be detected, but in the wrong direction
 bottom: ?
-
----
-
-# Isoforms ~ Transcript deconvolution
-* RSEM + EBSeq
-* eXpress
-* Bitseq
 
 ---
 # Calling Differentially Expressed Genes
@@ -115,6 +108,8 @@ which features show differential expression between conditions?
 
 * Enrichment of GO, Pathways, ...
 
+.footnote[you should try out Enrichr http://amp.pharm.mssm.edu/Enrichr/]
+
 ---
 
 # Isoform Territory
@@ -123,6 +118,11 @@ Building a decent pipeline is much harder than for DGE
 * much less consensus on tools
 * transcript abundance estimation is hard
 * more "experimental"
+
+# Transcript deconvolution
+* RSEM + EBSeq
+* eXpress
+* Bitseq
 
 ---
 
@@ -141,7 +141,13 @@ lacks the statistical framework to analyze replicates
 
 ---
 
-background-image:url(images/mp.jpg)
+# References for your convenience
+
+
+
+---
+
+background-image:url(http://www.ebc.cat/wp-content/uploads/2014/06/and-now-for-something-completely-different-1.jpg)
 
 ---
 
@@ -163,6 +169,18 @@ background-image:url(images/mp.jpg)
 
 ---
 
+# Stop hosting code at your lab website
+
+Schultheiss, Sebastian J., et al. "Persistence and availability of web services in computational biology." PLoS one 6.9 (2011): e24914. 
+
+Of 1000 web services:
+* Only 72% were still available at the published address.
+* The authors could not test the functionality for 33% because there was no example data, and 13% no longer worked as expected.
+* The authors could only confirm positive functionality for 45%.
+* Only 274 of the 872 corresponding authors answered an email.
+* Of these 78% said a service was developed by a student or temporary researcher, and many had no plan for maintenance after the researcher had moved on to a permanent position.
+---
+
 # Concepts
 #### Data 
 * No data manipulation by hand!!
@@ -175,15 +193,11 @@ background-image:url(images/mp.jpg)
  
 #### Audit trail: version control
 * git, hq, ...
+* Archive the __exact__ version of each tool used
 
 #### Writing
 * use version control, too
 * use a repository for collaboration
-
----
-
-# Stop hosting code at your lab website
-
 
 ---
 # Galaxy
@@ -344,5 +358,7 @@ if __name__ == "__main__":
 
 ---
 This presentation was created using [remark.js](https://github.com/gnab/remark)
+
+It is available at https://github.com/messersc/talks/blob/master/labmeeting.md
 
 The work done for JAMM in Galaxy can be found at https://github.com/messersc/jamm
