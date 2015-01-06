@@ -141,7 +141,16 @@ lacks the statistical framework to analyze replicates
 
 ---
 
-# References for your convenience
+# Reviews
+Engström, P. G., Steijger, T., Sipos, B., Grant, G. R., Kahles, A., Rätsch, G., … Bertone, P. (2013). Systematic evaluation of spliced alignment programs for RNA-seq data. Nature Methods, 10(12), 1185–91. doi:10.1038/nmeth.2722
+
+Rapaport, F., Khanin, R., Liang, Y., Pirun, M., Krek, A., Zumbo, P., … Betel, D. (2013). Comprehensive evaluation of differential gene expression analysis methods for RNA-seq data. Genome Biology, 14(9), R95. doi:10.1186/gb-2013-14-9-r95
+
+Alamancos, G., Agirre, E., & Eyras, E. (2014). Methods to study splicing from high-throughput RNA Sequencing data. Spliceosomal Pre-mRNA Splicing, 1126. doi:10.1007/978-1-62703-980-2
+
+Soneson, C., & Delorenzi, M. (2013). A comparison of methods for differential expression analysis of RNA-seq data. BMC Bioinformatics, 14(1), 91. doi:10.1186/1471-2105-14-91
+
+Seyednasrollah, F., Laiho, A., & Elo, L. L. (2013). Comparison of software packages for detecting differential expression in RNA-seq studies. Briefings in Bioinformatics, bbt086–. doi:10.1093/bib/bbt086
 
 
 
@@ -169,7 +178,7 @@ background-image:url(http://www.ebc.cat/wp-content/uploads/2014/06/and-now-for-s
 
 ---
 
-# Stop hosting code at your lab website
+# Stop hosting code on your lab website
 
 Schultheiss, Sebastian J., et al. "Persistence and availability of web services in computational biology." PLoS one 6.9 (2011): e24914. 
 
@@ -179,6 +188,8 @@ Of 1000 web services:
 * The authors could only confirm positive functionality for 45%.
 * Only 274 of the 872 corresponding authors answered an email.
 * Of these 78% said a service was developed by a student or temporary researcher, and many had no plan for maintenance after the researcher had moved on to a permanent position.
+
+.footnote[http://gettinggeneticsdone.blogspot.de/2013/01/stop-hosting-data-and-code-on-your-lab.html]
 ---
 
 # Concepts
