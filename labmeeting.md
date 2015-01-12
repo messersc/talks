@@ -107,6 +107,15 @@ In doubt, just use all 3
 
 ---
 
+# NY Genome Center pipeline
+## Nicolas Robine
+
+* STAR
+* featurecount (like HTSeq, but C rather than python)
+* DESeq2
+
+---
+
 # Isoform Territory
 
 Building a decent pipeline is much harder than for DGE
@@ -116,8 +125,10 @@ Building a decent pipeline is much harder than for DGE
 
 # Transcript deconvolution
 * RSEM + EBSeq
-* eXpress + ??
+* eXpress + ?? (2012: tool promised for downstream DGE testing)
 * Bitseq
+    * computationally expensive
+    * best performing in transcript expression estimation (doi:10.1038/nbt.2957))
 
 For all of them, you have to (re-)align with bowtie
 ---
@@ -242,6 +253,7 @@ History can be imported into your session and rerun as is or modified.
 background-image:url(images/history.png)
 
 ---
+
 # Workflows
 
 specify the steps in a process but not the datasets. Workflows are analyses that are meant to be run, each time with different user-provided datasets
@@ -261,7 +273,6 @@ background-image:url(images/sketch.jpg)
 * Introduction of new workflow models (dataset collections)
     * tools need updates (e.g. Tophat2)
     * one outdated tool can break your workflow
-
 
 ---
 
