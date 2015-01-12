@@ -2,4 +2,7 @@
 
 Playing around with HTML5/js based deck generators like remark.js
 
-maybe shwr & jekyller in the future
+For stand-alone remarkjs markdown files, fire up a http server with 
+'''
+python3 -m http.server
+'''
