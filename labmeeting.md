@@ -1,4 +1,4 @@
-# Lab Meeting - January 2015
+# Lab Meeting - 12th January 2015
 ## RNA-Seq, Reproducible Research and Galaxy
 ## Clemens Messerschmidt
 ---
@@ -16,6 +16,7 @@
 ---
 
 # Agenda (cont.) 
+
 * Reproducible Research
 * Galaxy
 	* Histories
@@ -25,9 +26,7 @@
 
 ---
 
-# Introduction
-
-What's the best way to analyze my data? 
+# What's the best way to analyze my data? 
 
 ## Possible requirements
 * reproducible
@@ -35,14 +34,8 @@ What's the best way to analyze my data?
 * easy to use
 * automated
 
----
-
-# Before building a pipeline
+## Before building a pipeline
 What's the right tool for each step?
-
-# Before running the pipeline
-Do I know everything necessary about my data to
-make the right decisions when configuring each tool?
 
 ---
 
@@ -82,7 +75,9 @@ background-image:url(http://3.bp.blogspot.com/-5WTELB6A4JQ/UJP22me-QvI/AAAAAAABB
 # Feature Counting / Abundance Estimation
 * HTSeq-count
 * Bioconductor tools with similar approaches
-### The approach taken _is_ biologically wrong
+
+
+### Potential problems
 ![Default-aligned image](http://3.bp.blogspot.com/-UN2mxaEvKV0/UM9-SZqwkHI/AAAAAAABCV8/8HGLF9_oZKE/s1600/cuffdiff1.png)
 .footnote[doi:10.1038/nbt.2450 Cufflinks2, Trapnell et al 2012, Pachter lab]
 
@@ -100,8 +95,8 @@ which features show differential expression between conditions?
 * edgeR
 * DESeq2
 * limma & voom
-* Bitseq
 
+In doubt, just use all 3 
 ---
 
 # Downstream Analysis
@@ -121,9 +116,10 @@ Building a decent pipeline is much harder than for DGE
 
 # Transcript deconvolution
 * RSEM + EBSeq
-* eXpress
+* eXpress + ??
 * Bitseq
 
+For all of them, you have to (re-)align with bowtie
 ---
 
 background-image:url(http://2.bp.blogspot.com/-YeFf7ioF7QY/UnKErnxs6uI/AAAAAAABFnk/JdG3UMwtBds/s640/eyras-methods.png)
@@ -152,8 +148,6 @@ Soneson, C., & Delorenzi, M. (2013). A comparison of methods for differential ex
 
 Seyednasrollah, F., Laiho, A., & Elo, L. L. (2013). Comparison of software packages for detecting differential expression in RNA-seq studies. Briefings in Bioinformatics, bbt086–. doi:10.1093/bib/bbt086
 
-
-
 ---
 
 background-image:url(http://www.ebc.cat/wp-content/uploads/2014/06/and-now-for-something-completely-different-1.jpg)
@@ -174,7 +168,6 @@ background-image:url(http://www.ebc.cat/wp-content/uploads/2014/06/and-now-for-s
 > If someone asks you: Would you be able to recreate Figure 2B from your third to last paper in a day a from the raw data?
 
 ###  _Some_ reproducibility is better than none.
-> While it may be painful to adjust your workflow now, it can save you at lot of anger, fear and despair in the long run
 
 ---
 
@@ -216,6 +209,10 @@ Of 1000 web services:
 
 ![Default-aligned image](images/galaxy.png)
 
+Why the three biggest positive contributions to reproducible research are the iPython Notebook, knitr, and Galaxy: 
+
+http://simplystatistics.org/2014/09/04/why-the-three-biggest-positive-contributions-to-reproducible-research-are-the-ipython-notebook-knitr-and-galaxy/
+
 ---
 # Galaxy
 
@@ -255,18 +252,29 @@ background-image:url(images/sketch.jpg)
 
 ---
 
+# Challenges
+
+* Galaxy development is moving fast
+    * interfaces change
+    * documentation rot
+
+* Introduction of new workflow models (dataset collections)
+    * tools need updates (e.g. Tophat2)
+    * one outdated tool can break your workflow
+
+
+---
+
 # Bonus: Bring your own software to Galaxy
 ### Or how I wrote a wrapper for JAMM
 
 Galaxy uses a XML (tool definition) to render the interface that gets exposed to the user for each tool
 
 ```xml
-<tool id="jamm1.0.6rev2" name="JAMM" version="1.0.6.2">
+<tool id="jamm" name="JAMM" version="1.0.6.2">
 <description>Calls peaks on NGS data</description>
 <requirements>
-<!--
-	<requirement type="package" version="2.5">b2g4pipe</requirement>
--->
+	<requirement type="package" version="3.1.1">R</requirement>
 </requirements>
 <command interpreter="python">
 jammwrapper.py -i
@@ -368,6 +376,8 @@ if __name__ == "__main__":
 ``` 
 
 ---
+
+# The end
 This presentation was created using [remark.js](https://github.com/gnab/remark)
 
 It is available at https://github.com/messersc/talks/blob/master/labmeeting.md
