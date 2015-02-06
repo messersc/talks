@@ -3,7 +3,7 @@ layout: true
 class: flamingo
 ---
 
-## How using markdown can free you from LaTex, Word, Powerpoint (and Dropbox, too, if you use git with github or bitbucket)
+## How using markdown can free you from LaTeX, Word, Powerpoint (and Dropbox, too, if you use git with github or bitbucket)
 
 .footnote[.left[.red[\*]Clemens Messerschmidt]]
 ---
