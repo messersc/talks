@@ -1,34 +1,54 @@
-# Clemens Messerschmidt
-## How using markdown can free you from LaTex, Word, Powerpoint
-## (and dropbox, if you use git with github or bitbucket)
-
+name: inverse
+layout: true
+class: flamingo
 ---
 
-# What is markdown
+## How using markdown can free you from LaTex, Word, Powerpoint (and Dropbox, too, if you use git with github or bitbucket)
 
+.footnote[.left[.red[\*]Clemens Messerschmidt]]
+---
 ## markdown is a markup language. (got it?)
-As are .html and .tex (actually, tex is more than that.) 
+As are .red[.html] and .red[.tex] (actually, tex is more than that.) 
 
-However, markdown is much simpler to write.
-
----
-# markdown examples
-
-
+## However, markdown is much simpler to write.
 
 ---
+## markdown examples
 
-# What is pandoc
+```{md}
+# My Einkaufszettel
+ * eggs
+ * milk
+ * wurst
 
-## pandoc is a translator.
+```
 
-http://johnmacfarlane.net/pandoc/diagram.png
+---
+
+* \* will help you make lists
+* \* see?
+
+\**emphasizes*\* things
+
+\# is a 
+#Heading
+\#\#
+is a smaller 
+## Heading
+\#\#\#\#\#\# is really small
+###### Heading
+
+.footnote[http://daringfireball.net/projects/markdown/syntax]
+
+---
+
+## pandoc is your translator
+
+.footnote[http://johnmacfarlane.net/pandoc/diagram.png]
 
 It will convert almost any text format into any other. Almost.
 
 ---
-
-# What is knitr
 
 ## knitr is a transparent engine for dynamic report generation with R
 
@@ -42,6 +62,7 @@ Because of all the cool stuff you can do!
 * write papers, reports, ...
 * prepare your presentations
 * supplement your R analyses with comments
+	* Reproducible research!!
 * generate .doc, .tex, .pdf, .html
 
 One starting point, x products.
@@ -51,20 +72,24 @@ One starting point, x products.
 # Example 1: Writing a paper
 Text is easy to write in markdown.
 
-Benefits over Word: 
+* Benefits over Word 
     * version control
         * merging conflicts
     * it's not Word
-
-Benefits over LaTeX:
+* Benefits over LaTeX
     * easier to write
     * your beautiful .tex is not going to be used anyway
+    * easier collaboration
+    * nicer with version control
 ---
 
 # Example 2: Presentations
-    * the same point apply, however Powerpoint is superior in same cases
-    * again, you get version control
-    * no clicking and dragging 
+
+* the same points apply, however Powerpoint/Keynote is superior in same cases
+* again, you get version control
+* no clicking and dragging 
+* no immediate visual feedback
+* placing images can be a $@#%^ in the neck
 
 ---
 
@@ -83,11 +108,13 @@ If you work in R, this is the closest thing to fully reproducible research you w
 # Example 4: Writing documentation
 markdown makes it easy to write documentation AND serve it.
 
-Frameworks: Mkdocs
+##Mkdocs
 
 Automatic generation and push to your gh-pages branch.
 
-Github pages: http://messersc.github.io/docs/
+My github pages: http://messersc.github.io/docs/
+
+.footnote[https://pages.github.com/]
 
 ---
 # Disadvantages
@@ -104,5 +131,17 @@ Github pages: http://messersc.github.io/docs/
 
 This presentation was written in markdown and rendered using remark.js
 
-### Highly recommended read: http://kieranhealy.org/blog/archives/2014/01/23/plain-text/
- 
+### Highly recommended reads and references:
+
+http://kieranhealy.org/blog/archives/2014/01/23/plain-text
+
+http://remarkjs.com/#1
+
+http://cpsievert.github.io/slides/markdown/#/
+
+http://zombietetris.de/blog/181/
+
+
+
+
+

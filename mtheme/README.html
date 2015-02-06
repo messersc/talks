@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+</head>
+<body>
+<h2 id="beamer-mtheme">Beamer mtheme</h2>
+<p>The <em>mtheme</em> is a Beamer theme with minimal visual. The core design principles of the theme were described in a <a href="http://bloerg.net/2014/09/20/a-modern-beamer-theme.html">blog post</a>. Not convinced? Have a look at the <a href="demo.pdf">demo slides</a>.</p>
+<div class="figure">
+<img src="http://i.imgur.com/wP4uGbS.png" alt="Sample" /><p class="caption">Sample</p>
+</div>
+<h3 id="installation">Installation</h3>
+<p>To install the theme either run <code>make install</code> or copy the style files ending with <code>.sty</code> to the source files of your presentation. As of now, fonts, colors and the section indicator are hardcoded into the theme. For the demo you need</p>
+<ul>
+<li>XeLaTeX,</li>
+<li>the <a href="https://github.com/mozilla/Fira">Fira Sans</a> font,</li>
+<li>TikZ and</li>
+<li>the Python package <a href="http://pygments.org/">Pygments</a> that you can get with <code>pip   install pygments</code>.</li>
+</ul>
+<p>Depending on the Linux distribution, the packaged name of Fira Sans might be <code>Fira Sans OT</code> instead of <code>Fira Sans</code>. In that case, you may have to edit <code>beamerfontthememetropolis.sty</code>.</p>
+<h3 id="usage">Usage</h3>
+<p>To build the demo slides just run <code>make</code> in the top-level directory. To use this theme with <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>-based presentations, you can run the following command</p>
+<pre><code>$ pandoc -t beamer --latex-engine=xelatex -V theme:m -o output.pdf input.md</code></pre>
+<h3 id="customization">Customization</h3>
+<h4 id="package-options">Package options</h4>
+<p>The <code>usetitleprogressbar</code> option adds a thin progress bar similar to the section progress bar underneath <em>each</em> frame title</p>
+<div class="figure">
+<img src="http://i.imgur.com/4BXHU4K.png" alt="Progressbar" /><p class="caption">Progressbar</p>
+</div>
+<p>In order to use <code>\cite</code>, <code>\ref</code> and similar commands in a frame title you have to protect the title. This can be done automatically with the <code>protectframetitle</code> option.</p>
+<p>The <code>blockbg</code> option defines extra colors used in defining the blocks. The blocks then have a gray background similar to other beamer themes.</p>
+<p>By default, this package adds <code>\vspace{2em}</code> after the frametitle to make content more centered on the frame. If using more content per slide, this can be turned off at the package-level by passing the <code>nooffset</code> option.</p>
+<h4 id="commands">Commands</h4>
+<p>The <code>\plain{title=[]}{body}</code> command sets a slide in plain dark colors which can be useful to focus attentation on a single image.</p>
+<h4 id="pgfplot-styles">pgfplot styles</h4>
+<p>The beamer theme also contains pre-defined pgfplot styles. Use the <code>mlineplot</code> key to plot line data and <code>mbarplot</code> or <code>horizontal mbarplot</code> to plot bar charts.</p>
+<div class="figure">
+<img src="http://i.imgur.com/yuEqU3j.png" alt="Charts" /><p class="caption">Charts</p>
+</div>
+<h3 id="license">License</h3>
+<p>The theme itself is licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>. This means that if you change the theme and re-distribute it, you <em>must</em> retain the copyright notice header and license it under the same CC-BY-SA license. This does not affect the presentation that you create with the theme.</p>
+</body>
+</html>
