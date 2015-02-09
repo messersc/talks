@@ -12,23 +12,11 @@ As are .red[.html] and .red[.tex] (actually, tex is more than that.)
 
 ## However, markdown is much simpler to write.
 
+http://cpsievert.github.io/slides/markdown/#/6
+
 .footnote[http://daringfireball.net/projects/markdown/syntax]
----
 
-* \* will help you make lists
-* \* see?
 
-\**emphasizes*\* things
-
-\# is a 
-#Heading
-\#\#
-is a smaller 
-## Heading
-\#\#\#\#\#\# is really small
-###### Heading
-
-.footnote[http://cpsievert.github.io/slides/markdown/#/6]
 ---
 
 ## pandoc is your translator
@@ -42,6 +30,8 @@ It will convert almost any text format into any other. Almost.
 ## knitr is a transparent engine for dynamic report generation with R
 
 If you did something related ~5 years ago, you would have used Sweave. knitr is better and integrated with Rstudio.
+
+.footnote[http://yihui.name/knitr/]
 
 ---
 
@@ -70,24 +60,30 @@ Text is easy to write in markdown.
     * your beautiful .tex is not going to be used anyway
     * easier collaboration
     * nicer with version control
+    
+### markdown can handle your bibtex citations, too.
 ---
 
 ## Example 2: Presentations
 
-* the same points apply, however Powerpoint/Keynote is superior in same cases
+* the same points apply as for text documents
 * again, you get version control
 * no clicking and dragging 
 * no immediate visual feedback
+
+### Gripes
 * placing images can be a $@#%^ in the neck
 
 ---
 
 ## Example 3: R reports
-### This is where it gets exiting.
+### This is where it gets exciting.
 
 __markdown + knitr => pdf/html__
 
 If you work in R, this is the closest thing to fully reproducible research you will find.
+
+.footnote[http://kieranhealy.org/files/misc/workflow-rmd-md.png]
 
 ---
 
@@ -113,11 +109,11 @@ My github pages: http://messersc.github.io/docs/
 	* rmarkdown
     * presentation frameworks handle new slides, images differently
     * efforts: http://commonmark.org/  
-* presentations: Powerpoint will give you much more control, e.g. figure placing
+* presentations: Powerpoint/LaTeX will give you much more control, e.g. figure placing
 
 ---
 
-## End
+## The End
 
 This presentation.red[\*]  was written in markdown and rendered using remark.js
 
@@ -125,10 +121,17 @@ This presentation.red[\*]  was written in markdown and rendered using remark.js
 
 http://kieranhealy.org/blog/archives/2014/01/23/plain-text
 
-http://remarkjs.com/#1
+http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown.html
+
+http://galahad.well.ox.ac.uk/repro/
+
+https://nicercode.github.io/guides/reports/
 
 http://cpsievert.github.io/slides/markdown/#/
 
 http://zombietetris.de/blog/181/
+
+http://remarkjs.com/#1
+
 
 .footnote[.red[ * ] https://github.com/messersc/talks/blob/master/markdownintro.md]
