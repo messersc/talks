@@ -10,7 +10,7 @@ class: flamingo
 ## markdown is a markup language. (got it?)
 As are .red[.html] and .red[.tex] (actually, tex is more than that.) 
 
-## However, markdown is much simpler to write.
+## However, markdown is much simpler to write and __read__.
 
 http://cpsievert.github.io/slides/markdown/#/6
 
@@ -61,7 +61,7 @@ Text is easy to write in markdown.
     * easier collaboration
     * nicer with version control
     
-### markdown can handle your bibtex citations, too.
+### pandoc's markdown can handle your bibtex citations, too.
 ---
 
 ## Example 2: Presentations
@@ -110,6 +110,7 @@ My github pages: http://messersc.github.io/docs/
     * presentation frameworks handle new slides, images differently
     * efforts: http://commonmark.org/  
 * presentations: Powerpoint/LaTeX will give you much more control, e.g. figure placing
+* pandoc's md to pdf will not break code lines by default (via LaTeX, so that is expected)
 
 ---
 
